@@ -5,13 +5,11 @@
 <!-- > <h3 align="center">"System and Network administration"</h3> -->
 
 <h2 align="center">
-    <!-- <a href="#-description-">Description</a> -->
-    <!-- <span>·</span> -->
-    <a href="# Virtual Machine">Virtual Machine</a>
+    <a href="#virtual-machine">Virtual Machine</a>
     <span>·</span>
-    <a href="# Network and Security">Network and Security</a>
+    <a href="#network-and-security">Network and Security</a>
     <span>·</span>
-    <a href="# Web">Web</a>
+    <a href="#web">Web</a>
 </h2>
 
 # Virtual Machine
@@ -22,12 +20,11 @@
 > 2.  Disk size has to be 8GB
 > 3.  At least one 4.2 GB partition.
 
-OS of my choice: Debian
-Hypervisor of my choice: Virtual Box
+OS: Debian
 
-<!-- My choice was to use Debian as a OS and Virtual Box as a hypervisor.\ -->
+Hypervisor: Virtual Box
 
-Partitions for the Virtual Machine is easiest to do when you are installing VM for the first time. Partition can also be done afterwards, but it can be little bit cubersome.
+Partitions for the Virtual Machine is easiest to do when you are installing VM for the first time. Partition can also be done afterwards, but it can be little bit cumbersome.
 
 How to check partitions from the terminal:\
 `lsblk`
@@ -51,14 +48,13 @@ Updating packages
 
 > Give this user access rights to `sudo` commands.
 
-Install sudo package:\
+Install sudo package:
+
 `apt install sudo`
 
 `sudo vim /etc/sudoers`
 
-```text
-<username>  ALL=(ALL) NOPASSWD:ALL
-```
+	<username>  ALL=(ALL) NOPASSWD:ALL
 
 ## Static IP
 
@@ -78,7 +74,7 @@ Install sudo package:\
 
 `sudo vim /etc/ssh/sshd_config`
 
-```text
+```bash
 Port 2021
 PubkeyAuthentication yes
 PasswordAuthentication no
