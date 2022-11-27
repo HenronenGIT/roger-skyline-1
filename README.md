@@ -13,6 +13,8 @@
     <a href="#network-and-security">Network and Security</a>
     <span>·</span>
     <a href="#web">Web</a>
+	<span>·</span>
+    <a href="#resources-and-tools">Resources and Tools</a>
 </h2>
 
 # Virtual Machine
