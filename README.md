@@ -1,6 +1,9 @@
 <h1 align="center">roger-skyline-1 </h1>
 
-<h2><em><p align="center" style="italic">Introduction to System and Network administration</p></em></h2>
+<h2><em><p align="center" >Introduction to System and Network administration</p></em></h2>
+
+<p align="center">Warning: Information found from these repository are mostly my personal notes. This means that info might be really scattered and not that clear for other users!</p>
+
 
 <!-- > <h3 align="center">"System and Network administration"</h3> -->
 
@@ -44,7 +47,7 @@ Updating packages
 
 > Create a non-root user to connect to the VM.
 
-    useradd <name>
+`useradd <name>`
 
 > Give this user access rights to `sudo` commands.
 
@@ -68,18 +71,15 @@ Install sudo package:
 
 ## Port
 
-> Change default port to one of your choice.
-
+> Change default port to one of your choice.\
 > SSH access HAS TO be done with publickeys. SSH root access SHOULD NOT be allowed directly, but with a user who can be root.
 
 `sudo vim /etc/ssh/sshd_config`
 
-```bash
-Port 2021
-PubkeyAuthentication yes
-PasswordAuthentication no
-PermitRootLogin no
-```
+    Port 2021
+    PubkeyAuthentication yes
+    PasswordAuthentication no
+    PermitRootLogin no
 
 `sudo systemctl restart sshd`
 
@@ -113,11 +113,9 @@ Enable UFW on startup:
 
 `sudo vim /etc/ufw/ufw.conf`
 
-```text
-ENABLED=yes
-sudo ufw enable
-sudo ufw verbose
-```
+    ENABLED=yes
+    sudo ufw enable
+    sudo ufw verbose
 
 ## Denial of Service Attack
 
@@ -141,10 +139,6 @@ Command for checking what IP:s has been updated:
 |`/etc/fail2ban/fail2ban.conf` |Main config file|
 |`/etc/fail2ban/filter.d/http-get-dos.conf`| Filter file|
 
-## Testing with Slowloris
-
-`sudofail2ban-client status | grep "Jail list:" | sed "s/ //g" | awk '{split($2,a,",");for(i in a) system("fail2ban-client status " a[i])}' | grep "Status\|IP list"`
-
 Resources for configurations:
 
 [Fail2Ban Port 80 to protect sites from DOS Attacks](https://www.tothenew.com/blog/fail2ban-port-80-to-protect-sites-from-dos-attacks/)
@@ -152,8 +146,6 @@ Resources for configurations:
 [Install fail2ban to protect your site from DOS attacks](https://www.garron.me/en/go2linux/fail2ban-protect-web-server-http-dos-attack.html)
 
 [How to unban an IP in fail2ban](https://linuxhint.com/unban-ip-fail2ban/)
-
----
 
 ## Prevent port scanning
 
@@ -165,15 +157,11 @@ Resource:
 
 [How to block port scan attacks with psad](https://www.unixmen.com/how-to-block-port-scan-attacks-with-psad-on-ubuntu-debian/)
 
-Install needed packages:
-
-`sudo apt install postfix && apt install psad`
-
 Command for seeing all open ports:
 
 `sudo lsof -i -P -n | grep LISTEN`
 
-### Commands
+Commands:
 
 | Command                                   | Description                |
 | ----------------------------------------- | -------------------------- |
@@ -205,17 +193,15 @@ Command for setting systemwide cron tasks:
 
 `sudo crontab -e`
 
-```bash
-#!bin/bash
-#
-# Updates all source packages. Log saved to /var/log/update_script.log
-
-sudo echo "--------------------------" >> /var/log/update_script.log
-sudo echo "Date $(date)" >> /var/log/update_script.log
-sudo apt-get update -y >> /var/log/update_script.log
-sudo apt-get upgrade -y >> /var/log/update_script.log
-echo "--------------------------" >> /var/log/update_script.log
-```
+    #!bin/bash
+    #
+    # Updates all source packages. Log saved to /var/log/update_script.log
+    
+    sudo echo "--------------------------" >> /var/log/update_script.log
+    sudo echo "Date $(date)" >> /var/log/update_script.log
+    sudo apt-get update -y >> /var/log/update_script.log
+    sudo apt-get upgrade -y >> /var/log/update_script.log
+    echo "--------------------------" >> /var/log/update_script.log
 
 Different commands for Cron:
 
@@ -227,12 +213,11 @@ Different commands for Cron:
 
 > Make a script to monitor changes of the /etc/crontab file and sends an email to root if it has been modified. Create a scheduled script task every day at midnight.
 
+Resources:
+
 [Setting up local mail delivery on Ubuntu](https://www.cmsimike.com/blog/2011/10/30/setting-up-local-mail-delivery-on-ubuntu-with-postfix-and-mutt/)
 
-
-### Most simple mail service
-
-[](https://www.cyberciti.biz/faq/delete-all-root-email-mailbox/)
+[Most simple mail service](https://www.cyberciti.biz/faq/delete-all-root-email-mailbox/)
 
 # Web
 
@@ -240,15 +225,11 @@ Different commands for Cron:
 
 [How to Create a Simple Login Page Using HTML and CSS](https://www.c-sharpcorner.com/article/creating-a-simple-login-page-using-html-and-css/)
 
-# SSL certificate
+## SSL certificate
 
 Resource:
 
 [How To Create a Self-Signed SSL Certificate for Apache in Debian 10 | DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-apache-in-debian-10)
-
-## SSL setup
-
-[How to Create a Simple Login Page Using HTML and CSS](https://www.c-sharpcorner.com/article/creating-a-simple-login-page-using-html-and-css/)
 
 # Resources and Tools
 
