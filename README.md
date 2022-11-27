@@ -2,7 +2,7 @@
 
 <h2><em><p align="center" >Introduction to System and Network administration</p></em></h2>
 
-<p align="center">Warning: Information found from these repository are mostly my personal notes. This means that info might be really scattered and not that clear for other users!</p>
+<p align="center">Warning: Information found from this repository is mostly my notes. This means that info might be really scattered and not that clear for other users!</p>
 
 
 <!-- > <h3 align="center">"System and Network administration"</h3> -->
@@ -27,7 +27,7 @@ OS: Debian
 
 Hypervisor: Virtual Box
 
-Partitions for the Virtual Machine is easiest to do when you are installing VM for the first time. Partition can also be done afterwards, but it can be little bit cumbersome.
+Partitions for the Virtual Machine are easiest to do when you are installing VM for the first time. The partition can also be done afterward, but it can be a little bit cumbersome.
 
 How to check partitions from the terminal:\
 `lsblk`
@@ -39,7 +39,7 @@ How to check partitions from the terminal:\
 Updating packages
 
 `apt-get update`\
-`apt-get upgrade`
+`apt-get 	upgrade`
 
 # Network and Security
 
@@ -64,14 +64,14 @@ Install sudo package:
 > Configure VM so it does NOT use DHCP.
 > It also needs to use static IP and a Netmask \30
 
-`apt install vim` (Because nobody does not use nano.)
+`apt install vim` (Because nobody does use nano.)
 
 `sudo vim /etc/network/interfaces`
 ![Static IP](./README/img/static_ip.png)
 
 ## Port
 
-> Change default port to one of your choice.\
+> Change the default port to one of your choice.\
 > SSH access HAS TO be done with publickeys. SSH root access SHOULD NOT be allowed directly, but with a user who can be root.
 
 `sudo vim /etc/ssh/sshd_config`
@@ -119,7 +119,7 @@ Enable UFW on startup:
 
 ## Denial of Service Attack
 
-> You have to set a DOS (Denial Of Service Attack) protection on your open ports of your VM.
+> You have to set a DOS (Denial Of Service Attack) protection on the open ports of your VM.
 
 ## fail2ban
 
@@ -127,7 +127,7 @@ Installing needed packages:
 
 `sudo apt-get install iptables apache2 fail2ban`
 
-Create copy from `jail.conf` and rename it to `jail.local`, because jail.conf can be overwritten by update.
+Create a copy from `jail.conf` and rename it to `jail.local`, because jail.conf can be overwritten by an update.
 
 `cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local`
 
@@ -149,7 +149,7 @@ Resources for configurations:
 
 ## Prevent port scanning
 
-> You have to set a protection against scans on your VM’s open ports.
+> You have to set protection against scans on your VM’s open ports.
 
 ## PSAD
 
@@ -157,7 +157,7 @@ Resource:
 
 [How to block port scan attacks with psad](https://www.unixmen.com/how-to-block-port-scan-attacks-with-psad-on-ubuntu-debian/)
 
-Command for seeing all open ports:
+The command for seeing all open ports:
 
 `sudo lsof -i -P -n | grep LISTEN`
 
@@ -169,11 +169,11 @@ Commands:
 | `sudo psad -F`                            | Unban everyone             |
 | `sudo psad --fw-rm-block-ip <IP-Address>` | Allow particular addresses |
 
-## Unneccessary services
+## Unnecessary services
 
 > Stop the services you don’t need for this project.
 
-Disable certain service:
+Disable certain services:
 
 `sudo systemctl disable <SERVICE_NAME>`
 
@@ -183,13 +183,13 @@ Show status of all services:
 
 ## Scripts and Crontab
 
-> Create a script that updates all the sources of package, then your packages and which logs the whole in a file named /var/log/update_script.log. Create a scheduled task for this script once a week at 4AM and every time the machine reboots.
+> Create a script that updates all the sources of the package, then your packages, and which logs the whole in a file named /var/log/update_script.log. Create a scheduled task for this script once a week at 4 AM and every time the machine reboots.
 
 Resource:
 
 [Scheduling cron tasks](https://linuxize.com/post/scheduling-cron-jobs-with-crontab/)
 
-Command for setting systemwide cron tasks:
+A command for setting systemwide cron tasks:
 
 `sudo crontab -e`
 
@@ -211,7 +211,7 @@ Different commands for Cron:
 | `crontab -l`             | List all the cron jobs for the current user.            |
 | `crontab -u username -e` | Edit another user's crons                               |
 
-> Make a script to monitor changes of the /etc/crontab file and sends an email to root if it has been modified. Create a scheduled script task every day at midnight.
+> Make a script to monitor changes of the /etc/crontab file and sends an email to the root if it has been modified. Create a scheduled script task every day at midnight.
 
 Resources:
 
